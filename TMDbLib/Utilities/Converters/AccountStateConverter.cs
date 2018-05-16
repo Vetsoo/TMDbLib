@@ -6,7 +6,7 @@ using TMDbLib.Objects.TvShows;
 
 namespace TMDbLib.Utilities.Converters
 {
-    internal class AccountStateConverter : JsonConverter
+    public class AccountStateConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

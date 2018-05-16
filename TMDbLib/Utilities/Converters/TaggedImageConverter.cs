@@ -7,7 +7,7 @@ using TMDbLib.Objects.Search;
 
 namespace TMDbLib.Utilities.Converters
 {
-    internal class TaggedImageConverter : JsonConverter
+    public class TaggedImageConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

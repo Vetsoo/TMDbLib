@@ -1,19 +1,18 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26114.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDbLib", "TMDbLib\TMDbLib.csproj", "{A7D4744C-9EF2-4CC3-B786-E8E568874933}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication", "TestApplication\TestApplication.csproj", "{4C8E1F72-DA9D-4EC6-8C04-5EC8EDC59FA1}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDbLibTests", "TMDbLibTests\TMDbLibTests.csproj", "{228615EB-BFA3-44A7-8648-A7EA48470777}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TMDbLib", "TMDbLib\TMDbLib.csproj", "{A7D4744C-9EF2-4CC3-B786-E8E568874933}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{26BF5A0A-354A-46F5-A20C-0BEB5D45783A}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
 		Readme.md = Readme.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TMDbLibTests.Core2", "TMDbLibTests.Core2\TMDbLibTests.Core2.csproj", "{8AC6DC2E-DD74-4426-B8E3-DF0BD57D2866}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApplication.Core2", "TestApplication.Core2\TestApplication.Core2.csproj", "{91311758-E08F-4D91-9CDA-A8165DA710C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,16 +24,19 @@ Global
 		{A7D4744C-9EF2-4CC3-B786-E8E568874933}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D4744C-9EF2-4CC3-B786-E8E568874933}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D4744C-9EF2-4CC3-B786-E8E568874933}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4C8E1F72-DA9D-4EC6-8C04-5EC8EDC59FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4C8E1F72-DA9D-4EC6-8C04-5EC8EDC59FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4C8E1F72-DA9D-4EC6-8C04-5EC8EDC59FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4C8E1F72-DA9D-4EC6-8C04-5EC8EDC59FA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{228615EB-BFA3-44A7-8648-A7EA48470777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{228615EB-BFA3-44A7-8648-A7EA48470777}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{228615EB-BFA3-44A7-8648-A7EA48470777}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{228615EB-BFA3-44A7-8648-A7EA48470777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AC6DC2E-DD74-4426-B8E3-DF0BD57D2866}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AC6DC2E-DD74-4426-B8E3-DF0BD57D2866}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AC6DC2E-DD74-4426-B8E3-DF0BD57D2866}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AC6DC2E-DD74-4426-B8E3-DF0BD57D2866}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91311758-E08F-4D91-9CDA-A8165DA710C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91311758-E08F-4D91-9CDA-A8165DA710C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91311758-E08F-4D91-9CDA-A8165DA710C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91311758-E08F-4D91-9CDA-A8165DA710C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {360FA767-49C5-4D6F-A8C1-DAD5FECD11CB}
 	EndGlobalSection
 EndGlobal

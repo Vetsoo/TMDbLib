@@ -5,7 +5,7 @@ using TMDbLib.Objects.Changes;
 
 namespace TMDbLib.Utilities.Converters
 {
-    internal class ChangeItemConverter : JsonConverter
+    public class ChangeItemConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

@@ -6,7 +6,7 @@ using TMDbLib.Objects.Search;
 
 namespace TMDbLib.Utilities.Converters
 {
-    internal class SearchBaseConverter : JsonConverter
+    public class SearchBaseConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)
         {

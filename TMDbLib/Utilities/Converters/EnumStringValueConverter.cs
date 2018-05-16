@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace TMDbLib.Utilities.Converters
 {
-    internal class EnumStringValueConverter : JsonConverter
+    public class EnumStringValueConverter : JsonConverter
     {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {

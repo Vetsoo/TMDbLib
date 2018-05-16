@@ -5,7 +5,7 @@ using TMDbLib.Objects.Search;
 
 namespace TMDbLib.Utilities.Converters
 {
-    internal class KnownForConverter : JsonCreationConverter<KnownForBase>
+    public class KnownForConverter : JsonCreationConverter<KnownForBase>
     {
         public override bool CanConvert(Type objectType)
         {

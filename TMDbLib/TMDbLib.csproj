@@ -4,7 +4,7 @@
     <AssemblyTitle>TMDb Library</AssemblyTitle>
     <VersionPrefix>1.2.0-alpha</VersionPrefix>
     <Authors>LordMike;Naliath</Authors>
-    <TargetFrameworks>net45;netstandard1.2</TargetFrameworks>
+    <TargetFrameworks>net45;netstandard2.0</TargetFrameworks>
     <AssemblyName>TMDbLib</AssemblyName>
     <PackageId>TMDbLib</PackageId>
     <PackageProjectUrl>https://github.com/LordMike/TMDbLib</PackageProjectUrl>
@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
@@ -22,7 +22,7 @@
     <PackageReference Include="System.Net.Http" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.2' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
     <PackageReference Include="System.Net.Http" Version="4.3.0" />
   </ItemGroup>
 

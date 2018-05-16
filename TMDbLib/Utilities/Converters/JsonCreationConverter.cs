@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace TMDbLib.Utilities.Converters
 {
-    internal abstract class JsonCreationConverter<T> : JsonConverter
+    public abstract class JsonCreationConverter<T> : JsonConverter
     {
         protected abstract T GetInstance(JObject jObject);
 
