@@ -40,6 +40,7 @@ namespace TMDbLibTests.Core2
         {
             // We will intentionally ignore errors reg. missing JSON as we do not request it
             IgnoreMissingJson(" / known_for", " / account_states", " / alternative_titles", " / changes", " / content_ratings", " / credits", " / external_ids", " / images", " / keywords", " / similar", " / translations", " / videos", " / genre_ids", " / recommendations");
+            IgnoreMissingCSharp("networks[array].logo_path / logo_path", "networks[array].origin_country / origin_country", "production_companies[array].logo_path / logo_path", "production_companies[array].origin_country / origin_country", "seasons[array].name / name", "seasons[array].overview / overview");
 
             TvShow tvShow = Config.Client.GetTvShowAsync(IdHelper.BreakingBad).Result;
 
@@ -55,6 +56,8 @@ namespace TMDbLibTests.Core2
         {
             IgnoreMissingJson(" / id");
             IgnoreMissingJson(" / genre_ids", " / known_for", " / similar", " / translations", " / videos", "alternative_titles / id", "content_ratings / id", "credits / id", "external_ids / id", "keywords / id", " / recommendations");
+            IgnoreMissingJson("recommendations / id", "recommendations.results[array] / account_states", "recommendations.results[array] / alternative_titles", "recommendations.results[array] / changes", "recommendations.results[array] / content_ratings", "recommendations.results[array] / created_by", "recommendations.results[array] / credits", "recommendations.results[array] / episode_run_time", "recommendations.results[array] / external_ids", "recommendations.results[array] / genres", "recommendations.results[array] / homepage", "recommendations.results[array] / images", "recommendations.results[array] / in_production", "recommendations.results[array] / keywords", "recommendations.results[array] / languages", "recommendations.results[array] / last_air_date", "recommendations.results[array] / number_of_episodes", "recommendations.results[array] / number_of_seasons", "recommendations.results[array] / popularity", "recommendations.results[array] / production_companies", "recommendations.results[array] / recommendations", "recommendations.results[array] / seasons", "recommendations.results[array] / similar", "recommendations.results[array] / status", "recommendations.results[array] / translations", "recommendations.results[array] / type", "recommendations.results[array] / videos");
+            IgnoreMissingCSharp("alternative_titles.results[array].type / type", "networks[array].logo_path / logo_path", "networks[array].origin_country / origin_country", "production_companies[array].logo_path / logo_path", "production_companies[array].origin_country / origin_country", "recommendations.page / page", "recommendations.results[array].networks[array].logo / logo", "recommendations.results[array].networks[array].origin_country / origin_country", "recommendations.total_pages / total_pages", "recommendations.total_results / total_results", "seasons[array].name / name", "seasons[array].overview / overview");
 
             Config.Client.SetSessionInformation(Config.UserSessionId, SessionType.UserSession);
 
@@ -131,6 +134,8 @@ namespace TMDbLibTests.Core2
         [Fact]
         public void TestTvShowSeparateExtrasAlternativeTitles()
         {
+            IgnoreMissingCSharp("results[array].type / type");
+
             ResultContainer<AlternativeTitle> alternativeTitles = Config.Client.GetTvShowAlternativeTitlesAsync(IdHelper.BreakingBad).Result;
             Assert.NotNull(alternativeTitles);
             Assert.Equal(IdHelper.BreakingBad, alternativeTitles.Id);
@@ -155,6 +160,8 @@ namespace TMDbLibTests.Core2
         [Fact]
         public void TestTvShowSeparateExtrasTranslations()
         {
+            IgnoreMissingCSharp("translations[array].data / data", "translations[array].iso_3166_1 / iso_3166_1");
+
             TranslationsContainerTv translations = Config.Client.GetTvShowTranslationsAsync(IdHelper.BreakingBad).Result;
             Assert.NotNull(translations);
             Assert.Equal(IdHelper.BreakingBad, translations.Id);
@@ -189,7 +196,8 @@ namespace TMDbLibTests.Core2
         public void TestTvShowSeparateExtrasAccountState()
         {
             IgnoreMissingJson(" / id", " / alternative_titles", " / changes", " / content_ratings", " / credits", " / external_ids", " / genre_ids", " / images", " / keywords", " / known_for", " / similar", " / translations", " / videos", " / recommendations");
-
+            IgnoreMissingCSharp("created_by[array].gender / gender", "networks[array].logo_path / logo_path", "networks[array].origin_country / origin_country", "production_companies[array].logo_path / logo_path", "production_companies[array].origin_country / origin_country", "seasons[array].name / name", "seasons[array].overview / overview");
+            
             // Test the custom parsing code for Account State rating
             Config.Client.SetSessionInformation(Config.UserSessionId, SessionType.UserSession);
 
@@ -234,8 +242,8 @@ namespace TMDbLibTests.Core2
 
             Assert.NotNull(tvShow.ProductionCompanies);
             Assert.Equal(3, tvShow.ProductionCompanies.Count);
-            Assert.Equal(2605, tvShow.ProductionCompanies[0].Id);
-            Assert.Equal("Gran Via Productions", tvShow.ProductionCompanies[0].Name);
+            Assert.Equal(11073, tvShow.ProductionCompanies[0].Id);
+            Assert.Equal("Sony Pictures Television", tvShow.ProductionCompanies[0].Name);
 
             Assert.NotNull(tvShow.CreatedBy);
             Assert.Equal(1, tvShow.CreatedBy.Count);
@@ -298,6 +306,7 @@ namespace TMDbLibTests.Core2
         public void TestTvShowSeasonCount()
         {
             IgnoreMissingJson(" / account_states", " / alternative_titles", " / changes", " / content_ratings", " / credits", " / external_ids", " / genre_ids", " / images", " / keywords", " / known_for", " / similar", " / translations", " / videos", " / recommendations");
+            IgnoreMissingCSharp("created_by[array].gender / gender", "networks[array].logo_path / logo_path", "networks[array].origin_country / origin_country", "production_companies[array].logo_path / logo_path", "production_companies[array].origin_country / origin_country", "seasons[array].name / name", "seasons[array].overview / overview");
 
             TvShow tvShow = Config.Client.GetTvShowAsync(1668).Result;
             Assert.Equal(tvShow.Seasons[1].EpisodeCount, 24);
@@ -373,6 +382,8 @@ namespace TMDbLibTests.Core2
         {
             // Ignore missing json
             IgnoreMissingJson("results[array] / media_type");
+            IgnoreMissingJson("results[array] / popularity");
+            IgnoreMissingCSharp("results[array].networks / networks");
 
             SearchContainer<SearchTv> tvShow = Config.Client.GetTvShowRecommendationsAsync(1668).Result;
 
@@ -387,7 +398,7 @@ namespace TMDbLibTests.Core2
             Assert.Equal("How I Met Your Mother", item.OriginalName);
             Assert.Equal(new DateTime(2005, 09, 19), item.FirstAirDate);
             Assert.True(TestImagesHelpers.TestImagePath(item.PosterPath), "item.PosterPath was not a valid image path, was: " + item.PosterPath);
-            Assert.True(item.Popularity > 0);
+            Assert.True(item.Popularity >= 0);
             Assert.Equal("How I Met Your Mother", item.Name);
             Assert.True(item.VoteAverage > 0);
             Assert.True(item.VoteCount > 0);
@@ -425,6 +436,7 @@ namespace TMDbLibTests.Core2
         public void TestTvShowLatest()
         {
             IgnoreMissingJson(" / account_states", " / alternative_titles", " / changes", " / content_ratings", " / credits", " / external_ids", " / genre_ids", " / images", " / keywords", " / similar", " / translations", " / videos", " / recommendations");
+            IgnoreMissingCSharp("networks[array].logo_path / logo_path", "networks[array].origin_country / origin_country", "seasons[array].name / name", "seasons[array].overview / overview");
 
             TvShow tvShow = Config.Client.GetLatestTvShowAsync().Sync();
 

@@ -10,6 +10,8 @@ namespace TMDbLibTests.Core2
         [Fact]
         public void TestNetworkGetById()
         {
+            IgnoreMissingCSharp("headquarters / headquarters", "homepage / homepage", "origin_country / origin_country");
+
             Network network = Config.Client.GetNetworkAsync(IdHelper.Hbo).Result;
 
             Assert.NotNull(network);

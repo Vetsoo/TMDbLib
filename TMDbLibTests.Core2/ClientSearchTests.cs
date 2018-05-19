@@ -31,7 +31,7 @@ namespace TMDbLibTests.Core2
             Assert.True(TestImagesHelpers.TestImagePath(item.BackdropPath), "item.BackdropPath was not a valid image path, was: " + item.BackdropPath);
             Assert.Equal("en", item.OriginalLanguage);
             Assert.Equal("Dr. No", item.OriginalTitle);
-            Assert.Equal("In the film that launched the James Bond saga, Agent 007 (Sean Connery) battles mysterious Dr. No, a scientific genius bent on destroying the U.S. space program. As the countdown to disaster begins, Bond must go to Jamaica, where he encounters beautiful Honey Ryder (Ursula Andress), to confront a megalomaniacal villain in his massive island headquarters.", item.Overview);
+            Assert.Equal("In the film that launched the James Bond saga, Agent 007 battles mysterious Dr. No, a scientific genius bent on destroying the U.S. space program. As the countdown to disaster begins, Bond must go to Jamaica, where he encounters beautiful Honey Ryder, to confront a megalomaniacal villain in his massive island headquarters.", item.Overview);
             Assert.Equal(false, item.Video);
             Assert.True(TestImagesHelpers.TestImagePath(item.PosterPath), "item.PosterPath was not a valid image path, was: " + item.PosterPath);
             Assert.Equal(new DateTime(1962, 10, 4), item.ReleaseDate);
@@ -90,6 +90,9 @@ namespace TMDbLibTests.Core2
         [Fact]
         public void TestSearchList()
         {
+            IgnoreMissingCSharp("status_code / status_code", "status_message / status_message");
+            IgnoreMissingJson(" / page", " / results", " / total_pages", " / total_results");
+
             TestHelpers.SearchPages(i => Config.Client.SearchListAsync("to watch", i).Result);
 
             SearchContainer<SearchList> result = Config.Client.SearchListAsync("to watch").Result;
@@ -160,7 +163,6 @@ namespace TMDbLibTests.Core2
             Assert.Equal("Breaking Bad", item.OriginalName);
             Assert.Equal("en", item.OriginalLanguage);
             Assert.True(TestImagesHelpers.TestImagePath(item.PosterPath), "item.PosterPath was not a valid image path, was: " + item.PosterPath);
-            Assert.Equal("Breaking Bad is an American crime drama television series created and produced by Vince Gilligan. Set and produced in Albuquerque, New Mexico, Breaking Bad is the story of Walter White, a struggling high school chemistry teacher who is diagnosed with inoperable lung cancer at the beginning of the series. He turns to a life of crime, producing and selling methamphetamine, in order to secure his family's financial future before he dies, teaming with his former student, Jesse Pinkman. Heavily serialized, the series is known for positioning its characters in seemingly inextricable corners and has been labeled a contemporary western by its creator.", item.Overview);
             Assert.True(item.Popularity > 0);
             Assert.True(item.VoteAverage > 0);
             Assert.True(item.VoteCount > 0);
@@ -197,9 +199,8 @@ namespace TMDbLibTests.Core2
             Assert.True(item.VoteCount > 0);
 
             Assert.NotNull(item.OriginCountry);
-            Assert.Equal(2, item.OriginCountry.Count);
+            Assert.Equal(1, item.OriginCountry.Count);
             Assert.True(item.OriginCountry.Contains("US"));
-            Assert.True(item.OriginCountry.Contains("CA"));
         }
     }
 }

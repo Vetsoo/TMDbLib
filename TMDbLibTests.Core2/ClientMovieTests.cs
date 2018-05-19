@@ -124,7 +124,9 @@ namespace TMDbLibTests.Core2
         [Fact]
         public void TestMoviesLanguage()
         {
+            IgnoreMissingCSharp("production_companies[array].logo_path / logo_path", "production_companies[array].origin_country / origin_country");
             IgnoreMissingJson(" / account_states", " / alternative_titles", " / changes", " / credits", " / images", " / keywords", " / lists", " / release_dates", " / releases", " / reviews", " / similar", " / translations", " / videos", " / recommendations");
+            IgnoreMissingJson(" / external_ids");
 
             Movie movie = Config.Client.GetMovieAsync(IdHelper.AGoodDayToDieHard).Result;
             Movie movieItalian = Config.Client.GetMovieAsync(IdHelper.AGoodDayToDieHard, "it").Result;
