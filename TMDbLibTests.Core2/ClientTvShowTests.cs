@@ -316,6 +316,7 @@ namespace TMDbLibTests.Core2
         public void TestTvShowVideos()
         {
             IgnoreMissingJson(" / account_states", " / alternative_titles", " / changes", " / content_ratings", " / credits", " / external_ids", " / genre_ids", " / images", " / keywords", " / known_for", " / similar", " / translations", "videos / id", " / recommendations");
+            IgnoreMissingCSharp("created_by[array].gender / gender", "networks[array].logo_path / logo_path", "networks[array].origin_country / origin_country", "production_companies[array].logo_path / logo_path", "production_companies[array].origin_country / origin_country", "seasons[array].name / name", "seasons[array].overview / overview");
 
             TvShow tvShow = Config.Client.GetTvShowAsync(1668, TvShowMethods.Videos).Result;
             Assert.NotNull(tvShow.Videos);
@@ -325,7 +326,7 @@ namespace TMDbLibTests.Core2
             Assert.Equal("552e1b53c3a3686c4e00207b", tvShow.Videos.Results[0].Id);
             Assert.Equal("en", tvShow.Videos.Results[0].Iso_639_1);
             Assert.Equal("lGTOru7pwL8", tvShow.Videos.Results[0].Key);
-            Assert.Equal("Friends - Opening", tvShow.Videos.Results[0].Name);
+            Assert.Equal("F.R.I.E.N.D.S - Opening Season 10", tvShow.Videos.Results[0].Name);
             Assert.Equal("YouTube", tvShow.Videos.Results[0].Site);
             Assert.Equal(360, tvShow.Videos.Results[0].Size);
             Assert.Equal("Opening Credits", tvShow.Videos.Results[0].Type);
@@ -334,6 +335,8 @@ namespace TMDbLibTests.Core2
         [Fact]
         public void TestTvShowTranslations()
         {
+            IgnoreMissingCSharp("translations[array].data / data", "translations[array].iso_3166_1 / iso_3166_1");
+
             TranslationsContainerTv translations = Config.Client.GetTvShowTranslationsAsync(1668).Result;
 
             Assert.Equal(1668, translations.Id);
